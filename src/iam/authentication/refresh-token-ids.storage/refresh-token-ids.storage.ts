@@ -7,6 +7,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { RefreshToken } from '../entities/refresh-token.entity';
 
+export class InvalidateRefreshTokenError extends Error {}
+
 @Injectable()
 export class RefreshTokenIdsStorage
   implements OnApplicationBootstrap, OnApplicationShutdown
@@ -39,8 +41,9 @@ export class RefreshTokenIdsStorage
     const token = await this.refreshTokenRepository.findOneBy({
       userId: this.getKey(userId),
     });
-    console.log(token);
-    console.log(tokenId);
+    if (token.tokenId !== tokenId) {
+      throw new InvalidateRefreshTokenError();
+    }
     return token ? token.tokenId === tokenId : false;
   }
 
