@@ -1,5 +1,9 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { Role } from '../enums/role.enum';
+import {
+  Permission,
+  PermissionType,
+} from 'src/iam/authorization/permission.type';
 
 @Entity()
 export class User {
@@ -14,4 +18,8 @@ export class User {
 
   @Column({ enum: Role, default: Role.Regular })
   role: Role;
+
+  /** having role and permisions colums combined together does not make sense . use one approach application needed. realworld secanrio it can have dedicated permision table for each resource. M:M relations*/
+  @Column({ enum: Permission, default: [], type: 'json' })
+  permissions: PermissionType[];
 }
