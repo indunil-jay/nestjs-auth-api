@@ -16,6 +16,6 @@ Content-Type: application/json
 POST http://localhost:3000/authentication/refresh-tokens
 Content-Type: application/json
 {
-    "refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTczNjM1MDY1MywiZXhwIjoxNzM2NDM3MDUzLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMCIsImlzcyI6ImxvY2FsaG9zdDozMDAwIn0.sgifnOXKm57ZkcbfCmIwl05WsOXZk9AWlSTLNCx3nXo"
+     "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJlZnJlc2hUb2tlbklkIjoiOWFlMjU0YzgtMGZlMS00YzhmLWExODMtNTUzYjBjOTk0M2ZhIiwiaWF0IjoxNzM2MzUzODUxLCJleHAiOjE3MzY0NDAyNTEsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.625u2m576Kq8qTVCTwFzL7MKYO5i0hv42g8mL9BlmXA"
 
 }
