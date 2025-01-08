@@ -13,6 +13,7 @@ import { AccessTokenGuard } from './authentication/guards/access-token/access-to
 import { AuthenticationGuard } from './authentication/guards/authentication/authentication.guard';
 import { RefreshTokenIdsStorage } from './authentication/refresh-token-ids.storage/refresh-token-ids.storage';
 import { RefreshToken } from './authentication/entities/refresh-token.entity';
+import { RolesGuard } from './authorization/guards/roles/roles.guard';
 
 @Module({
   providers: [
@@ -24,6 +25,10 @@ import { RefreshToken } from './authentication/entities/refresh-token.entity';
     {
       provide: APP_GUARD,
       useClass: AuthenticationGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
     },
     AccessTokenGuard,
     RefreshTokenIdsStorage,
