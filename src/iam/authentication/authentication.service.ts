@@ -73,7 +73,7 @@ export class AuthenticationService {
     return await this.generateTokens(user);
   }
 
-  private async generateTokens(user: User) {
+  public async generateTokens(user: User) {
     //this for refresh  token rotations
     const refreshTokenId = randomUUID();
 

@@ -22,6 +22,8 @@ import { PoliciesGuard } from './authorization/guards/policies/policies.guard';
 import { ApiKeysService } from './authentication/api-keys.service';
 import { ApiKey } from 'src/users/api-keys/entities/api-key.entity';
 import { ApiKeyGuard } from './authentication/guards/api-key/api-key.guard';
+import { GoogleAuthenticationService } from './authentication/social/google-authentication.service';
+import { GoogleAuthenticationController } from './authentication/social/google-authentication.controller';
 
 @Module({
   providers: [
@@ -46,12 +48,13 @@ import { ApiKeyGuard } from './authentication/guards/api-key/api-key.guard';
     FrameworkContributorPolicyHanlder,
     PolicyHandlerStorage,
     ApiKeysService,
+    GoogleAuthenticationService,
   ],
   imports: [
     TypeOrmModule.forFeature([User, RefreshToken, ApiKey]),
     JwtModule.registerAsync(jwtConfig.asProvider()),
     ConfigModule.forFeature(jwtConfig),
   ],
-  controllers: [AuthenticationController],
+  controllers: [AuthenticationController, GoogleAuthenticationController],
 })
 export class IamModule {}
