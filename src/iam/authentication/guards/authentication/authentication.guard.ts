@@ -1,3 +1,4 @@
+import { ApiKeyGuard } from './../api-key/api-key.guard';
 import {
   CanActivate,
   ExecutionContext,
@@ -18,12 +19,14 @@ export class AuthenticationGuard implements CanActivate {
     CanActivate | CanActivate[]
   > = {
     [AuthType.Bearer]: this.accessTokenGuard,
+    [AuthType.ApiKey]: this.apiKeyGuard,
     [AuthType.None]: { canActivate: () => true },
   };
 
   constructor(
     private readonly reflector: Reflector,
     private readonly accessTokenGuard: AccessTokenGuard,
+    private readonly apiKeyGuard: ApiKeyGuard,
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
