@@ -12,3 +12,10 @@ Content-Type: application/json
     "email":"test@gmail.com",
     "password":"test1122"
 }
+
+POST http://localhost:3000/authentication/refresh-tokens
+Content-Type: application/json
+{
+    "refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTczNjM1MDY1MywiZXhwIjoxNzM2NDM3MDUzLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMCIsImlzcyI6ImxvY2FsaG9zdDozMDAwIn0.sgifnOXKm57ZkcbfCmIwl05WsOXZk9AWlSTLNCx3nXo"
+
+}
