@@ -1,3 +1,4 @@
+import { OtpAuthenticationService } from './otp-authentication.service';
 import {
   ConflictException,
   Inject,
@@ -35,6 +36,8 @@ export class AuthenticationService {
     private readonly jwtConfiguration: ConfigType<typeof jwtConfig>,
 
     private readonly refreshTokenIdsStorage: RefreshTokenIdsStorage,
+
+    private readonly otpAuthenticationService: OtpAuthenticationService,
   ) {}
   async signUp(signUpDto: SignUpDto) {
     try {
@@ -70,6 +73,16 @@ export class AuthenticationService {
       throw new UnauthorizedException('password does not macth');
     }
 
+    if (user.isTfaEnabled) {
+      const isValid = this.otpAuthenticationService.verifyCode(
+        signInDto.tfaCode,
+        user.tfaSecret,
+      );
+
+      if (!isValid) {
+        throw new UnauthorizedException('Invalid 2FA code');
+      }
+    }
     return await this.generateTokens(user);
   }
 

@@ -24,6 +24,7 @@ import { ApiKey } from 'src/users/api-keys/entities/api-key.entity';
 import { ApiKeyGuard } from './authentication/guards/api-key/api-key.guard';
 import { GoogleAuthenticationService } from './authentication/social/google-authentication.service';
 import { GoogleAuthenticationController } from './authentication/social/google-authentication.controller';
+import { OtpAuthenticationService } from './authentication/otp-authentication.service';
 
 @Module({
   providers: [
@@ -49,6 +50,7 @@ import { GoogleAuthenticationController } from './authentication/social/google-a
     PolicyHandlerStorage,
     ApiKeysService,
     GoogleAuthenticationService,
+    OtpAuthenticationService,
   ],
   imports: [
     TypeOrmModule.forFeature([User, RefreshToken, ApiKey]),

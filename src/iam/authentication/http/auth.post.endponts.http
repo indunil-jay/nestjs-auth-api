@@ -1,7 +1,7 @@
 POST http://localhost:3000/authentication/sign-in
 Content-Type: application/json
 {
-    "email":"test@gmail.com",
+    "email":"test1@gmail.com",
     "password":"test1122"
 }
 
@@ -18,4 +18,12 @@ Content-Type: application/json
 {
      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJlZnJlc2hUb2tlbklkIjoiOWFlMjU0YzgtMGZlMS00YzhmLWExODMtNTUzYjBjOTk0M2ZhIiwiaWF0IjoxNzM2MzUzODUxLCJleHAiOjE3MzY0NDAyNTEsImF1ZCI6ImxvY2FsaG9zdDozMDAwIiwiaXNzIjoibG9jYWxob3N0OjMwMDAifQ.625u2m576Kq8qTVCTwFzL7MKYO5i0hv42g8mL9BlmXA"
 
+}
+
+POST http://localhost:3000/authentication/2fa/generate
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoidGVzdDFAZ21haWwuY29tIiwicm9sZSI6InJlZ3VsYXIiLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczNjM2NDYyMiwiZXhwIjoxNzM2MzY4MjIyLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMCIsImlzcyI6ImxvY2FsaG9zdDozMDAwIn0.XFl8KbvFsp_4mrFnkZfk-BDg_y1n5cxqwFNN6_LpVqg
+{
+    "email":"test1@gmail.com",
+    "password":"test1122"
 }
