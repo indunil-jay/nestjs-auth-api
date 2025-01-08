@@ -16,6 +16,10 @@ import { RefreshToken } from './authentication/entities/refresh-token.entity';
 import { RolesGuard } from './authorization/guards/roles/roles.guard';
 import { PermissionsGuard } from './authorization/guards/permissions/permissions.guard';
 
+import { PolicyHandlerStorage } from './authorization/policies/policy-handlers.storage';
+import { FrameworkContributorPolicyHanlder } from './authorization/policies/framework-contributor.policy';
+import { PoliciesGuard } from './authorization/guards/policies/policies.guard';
+
 @Module({
   providers: [
     {
@@ -29,10 +33,14 @@ import { PermissionsGuard } from './authorization/guards/permissions/permissions
     },
     {
       provide: APP_GUARD,
-      useClass: PermissionsGuard, //RolesGuard,
+      useClass: PoliciesGuard,
+      //RolesGuard,
+      //   PermissionsGuard, ,
     },
     AccessTokenGuard,
     RefreshTokenIdsStorage,
+    FrameworkContributorPolicyHanlder,
+    PolicyHandlerStorage,
   ],
   imports: [
     TypeOrmModule.forFeature([User, RefreshToken]),
